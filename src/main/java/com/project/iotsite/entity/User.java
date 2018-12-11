@@ -1,6 +1,7 @@
 package com.project.iotsite.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,13 +12,25 @@ public class User {
     private String name;
     private String surname;
     private String email;
+    private String username;
     private String password;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @ManyToMany
+
+
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "user_device",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "device_id", referencedColumnName = "id"))
@@ -30,9 +43,11 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.username=username;
         this.password = password;
         this.role = role;
         this.devices = devices;
+        this.token = token;
     }
 
     public long getId() {
@@ -89,5 +104,33 @@ public class User {
 
     public void setDevices(Set<Device> devices) {
         this.devices = devices;
+    }
+
+    public void addDevice(Device device) {
+        if (this.devices == null) {
+            this.devices = new HashSet<>();
+        }
+        this.devices.add(device);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                '}';
     }
 }

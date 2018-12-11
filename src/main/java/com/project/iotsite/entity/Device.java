@@ -1,5 +1,6 @@
 package com.project.iotsite.entity;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,25 +11,30 @@ public class Device {
     private long id;
     private String name;
     private String info;
-    private boolean status;
+    private Long status;
 
     @ManyToOne
     @JoinColumn(name = "type_id")
     private Type type;
 
-    @ManyToMany
-    @JoinTable(name = "user_device",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "device_id", referencedColumnName = "id"))
+    @ManyToMany(mappedBy = "devices")
     private Set<User> users;
 
     @ManyToOne
+    @JoinColumn(name="room_id")
     private Room room;
 
     public Device() {
     }
 
-    public Device(String name, String info, boolean status, Type type, Set<User> users, Room room) {
+    public Device(String name, String info, Long status, Type type) {
+        this.name = name;
+        this.info = info;
+        this.status = status;
+        this.type = type;
+    }
+
+    public Device(String name, String info, Long status, Type type, Set<User> users, Room room) {
         this.name = name;
         this.info = info;
         this.status = status;
@@ -61,11 +67,11 @@ public class Device {
         this.info = info;
     }
 
-    public boolean isStatus() {
+    public Long getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Long status) {
         this.status = status;
     }
 
@@ -77,13 +83,6 @@ public class Device {
         this.type = type;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 
     public Room getRoom() {
         return room;

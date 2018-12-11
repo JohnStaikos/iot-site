@@ -1,10 +1,14 @@
 package com.project.iotsite.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Type {
@@ -13,10 +17,15 @@ public class Type {
     private long id;
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "type")
     private List<Device> devices;
 
     public Type() {
+    }
+
+    public Type(String name) {
+        this.name = name;
     }
 
     public Type(String name, List<Device> devices) {
@@ -40,11 +49,4 @@ public class Type {
         this.name = name;
     }
 
-    public List<Device> getDevices() {
-        return devices;
-    }
-
-    public void setDevices(List<Device> devices) {
-        this.devices = devices;
-    }
 }

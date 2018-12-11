@@ -1,0 +1,202 @@
+Index: .idea/libraries/Maven__com_h2database_h2_1_4_197.xml
+===================================================================
+--- .idea/libraries/Maven__com_h2database_h2_1_4_197.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ .idea/libraries/Maven__com_h2database_h2_1_4_197.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: com.h2database:h2:1.4.197">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.197/h2-1.4.197.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.197/h2-1.4.197-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.197/h2-1.4.197-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/dataSources.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ .idea/dataSources.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+-    <data-source source="LOCAL" name="jdbc:h2:mem:testdb" uuid="3c983302-a0a6-4393-811c-3e7a36be3498">
+-      <driver-ref>h2.unified</driver-ref>
+-      <synchronize>true</synchronize>
+-      <jdbc-driver>org.h2.Driver</jdbc-driver>
+-      <jdbc-url>jdbc:h2:mem:testdb</jdbc-url>
+-    </data-source>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ .idea/compiler.xml	(date 1543340164000)
+@@ -10,7 +10,7 @@
+       </profile>
+     </annotationProcessing>
+     <bytecodeTargetLevel>
+-      <module name="iotsite" target="11" />
++      <module name="iotsite" target="8" />
+     </bytecodeTargetLevel>
+   </component>
+   <component name="JavacSettings">
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ pom.xml	(date 1543340676000)
+@@ -21,7 +21,7 @@
+     <properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+-        <java.version>11</java.version>
++        <java.version>8</java.version>
+     </properties>
+ 
+     <dependencies>
+@@ -44,10 +44,9 @@
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-data-rest</artifactId>
+         </dependency>
+-
+         <dependency>
+-            <groupId>com.h2database</groupId>
+-            <artifactId>h2</artifactId>
++            <groupId>mysql</groupId>
++            <artifactId>mysql-connector-java</artifactId>
+             <scope>runtime</scope>
+         </dependency>
+     </dependencies>
+Index: iotsite.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- iotsite.iml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ iotsite.iml	(date 1543340683000)
+@@ -14,7 +14,7 @@
+       </configuration>
+     </facet>
+   </component>
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+     <output url="file://$MODULE_DIR$/target/classes" />
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+     <content url="file://$MODULE_DIR$">
+@@ -23,7 +23,7 @@
+       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+-    <orderEntry type="inheritedJdk" />
++    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.1.0.RELEASE" level="project" />
+     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.1.0.RELEASE" level="project" />
+@@ -107,6 +107,6 @@
+     <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE" level="project" />
+     <orderEntry type="library" name="Maven: org.atteo:evo-inflector:1.2.2" level="project" />
+     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
+-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.197" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:8.0.13" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ .idea/misc.xml	(date 1543340164000)
+@@ -7,7 +7,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/classes" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/application.properties	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ src/main/resources/application.properties	(date 1543340548000)
+@@ -1,17 +1,14 @@
+-spring.h2.console.enabled=true
+-
+ spring.mvc.view.prefix:/templates/
+ spring.mvc.view.suffix:.html
+ 
+-spring.datasource.url=jdbc:mysql://localhost:3306/jpaexample?useSSL=false
++spring.datasource.url=jdbc:mysql://localhost:3306/internet_thinks?useSSL=false
+ spring.datasource.username=root
+-spring.datasource.password=root
+-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
++spring.datasource.password=Micro2085
+ spring.datasource.tomcat.max-wait=1000
+ spring.datasource.tomcat.max-active=500
+ 
+ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+-spring.jpa.hibernate.ddl-auto = validate
++spring.jpa.hibernate.ddl-auto = create-drop
+ spring.jpa.show-sql=true
+ 
+ logging.level.org.hibernate.SQL=DEBUG
+Index: src/main/java/com/project/iotsite/controller/DeviceController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/project/iotsite/controller/DeviceController.java	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ src/main/java/com/project/iotsite/controller/DeviceController.java	(date 1543340430000)
+@@ -10,7 +10,6 @@
+ @RestController
+ public class DeviceController  {
+ 
+-
+     private DeviceRepository deviceRepository;
+ 
+     public DeviceController(DeviceRepository deviceRepository) {
+Index: src/main/java/com/project/iotsite/repository/DeviceRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/project/iotsite/repository/DeviceRepository.java	(revision 9dbe0a0f3f4f9e9b02033631a5ce3680bf4c068c)
++++ src/main/java/com/project/iotsite/repository/DeviceRepository.java	(date 1543340384000)
+@@ -1,8 +1,15 @@
+ package com.project.iotsite.repository;
+ 
+ import com.project.iotsite.entity.Device;
++import com.project.iotsite.entity.User;
+ import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.stereotype.Repository;
+ 
++import java.util.List;
++
++@Repository("userRepository")
+ public interface DeviceRepository extends JpaRepository<Device, Long> {
+ 
++    List<User> findByname(String name);
++
+ }
+\ No newline at end of file
